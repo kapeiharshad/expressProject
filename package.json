@@ -1,7 +1,7 @@
 {
   "name": "expressProject",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "app.js",
   "repository": "https://github.com/kapeiharshad/expressProject.git",
   "author": "HarshadKapei",
   "license": "MIT",
