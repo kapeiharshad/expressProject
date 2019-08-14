@@ -7,4 +7,4 @@ var vehicalSchema = new Schema({
   comments: [{ body: String, date: Date }],
   manufacturedDate: { type: Date, default: Date.now }
 });
-var vehical = mongoose.model("vehical", vehicalSchema);
+module.exports = mongoose.model("vehical", vehicalSchema);
