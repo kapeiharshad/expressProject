@@ -6,6 +6,8 @@ const port = 3000;
 let mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/expressProject', {
     useNewUrlParser: true
+}, () => {
+    console.log("Mongodb Connected")
 });
 let conn = mongoose.connection;
 app.use(bodyParser.json())
