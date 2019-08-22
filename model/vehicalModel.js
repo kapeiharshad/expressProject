@@ -1,15 +1,15 @@
 var mongoose = require("mongoose");
 var vehical = require("../schema/vehical.js");
 module.exports = {
-  save: (data, harshadCallback) => {
+  save: (data, callback) => {
     var vehicalSave = new vehical(data)
     vehicalSave.save((err, data) => {
       if (err) {
         console.log("err", err)
-        harshadCallback(err, null)
+        callback(err, null)
       } else {
         console.log("data save")
-        harshadCallback(null, data)
+        callback(null, data)
       }
     })
   }
