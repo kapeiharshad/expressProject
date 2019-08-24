@@ -2,16 +2,23 @@ var vehicalModel = require("../model/vehicalModel")
 var express = require('express');
 var router = express.Router();
 //******************BY using Callback******************************
-router.post('/save', (req, res) => {
-  console.log("save ....", req.body)
-  vehicalModel.save(req.body, (err, data) => {
+router.post('/saveCallback', (req, res) => {
+  vehicalModel.saveCallback(req.body, (err, data) => {
     if (err) {
-      console.log("err controller", err)
       res.status(500).send(err)
     } else {
-      console.log("data controller", data)
       res.status(200).send(data)
     }
+  })
+})
+//********************By using Promise ******************************
+router.post('/savePromise', (req, res) => {
+  vehicalModel.savePromise(req.body).then((data) => {
+    console.log("from data...........")
+    res.status(200).send(data)
+  }).catch((data) => {
+    console.log("from err...........")
+    res.status(500).send(data)
   })
 })
 module.exports = router;

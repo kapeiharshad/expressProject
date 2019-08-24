@@ -5,7 +5,7 @@ var vehicalSchema = new Schema({
   company: {
     type: String,
     required: true
-  },
+  }
   // colour: String,
   // comments: [{ body: String, date: Date }],
   // manufacturedDate: { type: Date, default: Date.now }
