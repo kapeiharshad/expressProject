@@ -21,4 +21,14 @@ router.post('/savePromise', (req, res) => {
     res.status(500).send(data)
   })
 })
+//*********************By using async-await***************************
+router.post('/saveAsyncAwait', (req, res) => {
+  vehicalModel.savePromise(req.body).then((data) => {
+    console.log("from data...........")
+    res.status(200).send(data)
+  }).catch((data) => {
+    console.log("from err...........")
+    res.status(500).send(data)
+  })
+})
 module.exports = router;
