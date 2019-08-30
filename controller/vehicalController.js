@@ -23,8 +23,8 @@ router.post('/savePromise', (req, res) => {
 })
 //*********************By using async-await***************************
 router.post('/saveAsyncAwait', (req, res) => {
-  vehicalModel.savePromise(req.body).then((data) => {
-    console.log("from data...........")
+  vehicalModel.saveAsyncAwait(req.body).then((data) => {
+    console.log("from data...........", data)
     res.status(200).send(data)
   }).catch((data) => {
     console.log("from err...........")
