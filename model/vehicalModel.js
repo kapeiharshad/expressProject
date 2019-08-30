@@ -6,10 +6,8 @@ module.exports = {
     var vehicalSave = new vehical(data)
     vehicalSave.save((err, data) => {
       if (err) {
-        console.log("err", err)
         callback(err, null)
       } else {
-        console.log("data save")
         callback(null, data)
       }
     })
@@ -20,10 +18,8 @@ module.exports = {
       var vehicalSave = new vehical(data)
       vehicalSave.save((err, data) => {
         if (err) {
-          console.log("err", err)
           reject(err)
         } else {
-          console.log("data save")
           resolve(data)
         }
       })
