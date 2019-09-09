@@ -2,8 +2,8 @@ const express = require("express");
 const app = express();
 const env = require("./config/env")();
 const bodyParser = require("body-parser");
-const glob = require("glob");
-let mongoose = require("mongoose");
+const fs = require('fs');
+const mongoose = require("mongoose");
 mongoose.connect(
     env.mongoUrl + "expressProject", {
         useNewUrlParser: true
@@ -12,17 +12,14 @@ mongoose.connect(
         console.log("Mongodb Connected");
     }
 );
-let conn = mongoose.connection;
 app.use(bodyParser.json());
 
-glob("./controller/*.js", function (err, files) {
-    for (var i = 0; i <= files.length - 1; i++) {
-        var controller = require(`${files[i]}`);
-        var str1 = files[i].split("/");
-        var str2 = str1[2].split("Controller.js");
-        app.use(`/${str2[0]}`, controller);
-    }
-});
+const controllerfiles = fs.readdirSync('./controller/');
+for (var i = 0; i <= controllerfiles.length - 1; i++) {
+    var controller = require(`./controller/${controllerfiles[i]}`);
+    var str1 = controllerfiles[i].split("Controller.js");
+    app.use(`/${str1[0]}`, controller);
+}
 app.listen(env.port, () =>
-    console.log(`Example app listening on port ${env.port}!`)
+    console.log(`Example app listening on port ${env.port}! \n Notice:- Name of controller file should be (xxxController.js)`)
 );
