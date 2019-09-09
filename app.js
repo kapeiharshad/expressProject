@@ -1,12 +1,11 @@
 const express = require("express");
 const app = express();
-const config = require("./config")();
+const env = require("./config/env")();
 const bodyParser = require("body-parser");
 const glob = require("glob");
-// const port = 3000;
 let mongoose = require("mongoose");
 mongoose.connect(
-    config.mongoUrl + "expressProject", {
+    env.mongoUrl + "expressProject", {
         useNewUrlParser: true
     },
     () => {
@@ -24,8 +23,6 @@ glob("./controller/*.js", function (err, files) {
         app.use(`/${str2[0]}`, controller);
     }
 });
-console.log("config:::::", config.mongoUrl);
-// console.log("NODE_ENV::::::", process.env.NODE_ENV)
-app.listen(config.port, () =>
-    console.log(`Example app listening on port ${config.port}!`)
+app.listen(env.port, () =>
+    console.log(`Example app listening on port ${env.port}!`)
 );
