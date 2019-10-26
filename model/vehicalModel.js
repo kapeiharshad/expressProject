@@ -38,13 +38,11 @@ module.exports = {
         name: data.name
       })
       if (findOnedata) {
-        return "Member already present"
+        throw "Member already present"
       } else {
-        console.log("2")
         let vehicalData = new vehical(data)
-        let vehical = await vehicalData.save()
-        console.log("12", vehical)
-        return vehical
+        let saveVehical = await vehicalData.save()
+        return saveVehical
       }
     } catch (err) {
       throw err;
